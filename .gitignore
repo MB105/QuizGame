@@ -1,0 +1,12 @@
+Logs/
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+.vs/
+.vscode/
+.idea/
+UserSettings/
+Packages/com.unity.collab-proxy/
+
