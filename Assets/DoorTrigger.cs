@@ -2,27 +2,34 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    private Animator animator;
+    public Animator doorAnimator; // Reference til Animator på døren
 
-    void Start()
+    private void Start()
     {
-        animator = GetComponent<Animator>(); // Henter Animator-komponenten på døren
+        // Tjekker om animatoren er tilknyttet korrekt
+        if (doorAnimator == null)
+        {
+            Debug.LogError("🚨 DoorAnimator ikke sat! Træk døren ind i scriptets doorAnimator-felt i Inspector.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Tjekker om det er spilleren, der træder ind
+        if (other.CompareTag("Player"))
         {
-            animator.SetTrigger("Open"); // Starter åbne-animationen
+            doorAnimator.SetTrigger("Open");
+            Debug.Log("🚪 Døren åbner!");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) // Tjekker om spilleren forlader zonen
+        if (other.CompareTag("Player"))
         {
-            animator.SetTrigger("Close"); // Starter lukke-animationen
+            doorAnimator.SetTrigger("Close");
+            Debug.Log("🚪 Døren lukker!");
         }
     }
 }
+
 
