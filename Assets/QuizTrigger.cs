@@ -21,23 +21,29 @@ public class QuizTrigger : MonoBehaviour
 
     private void ShowQuiz()
     {
+        
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
+
         quizPanel.SetActive(true);
         questionText.text = "Hvad er 2 + 2?";
 
         string[] answers = { "3", "4", "5" };
-        correctAnswerIndex = 1; // Index for det korrekte svar ("4")
+        correctAnswerIndex = 1;
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int index = i; // For at undgå closure-problemer
+            int index = i;
             answerButtons[i].GetComponentInChildren<TMP_Text>().text = answers[i];
             answerButtons[i].onClick.RemoveAllListeners();
             answerButtons[i].onClick.AddListener(() => CheckAnswer(index));
         }
     }
 
-    private void CheckAnswer(int selectedIndex)
+    public void CheckAnswer(int selectedIndex)
     {
+        
         if (selectedIndex == correctAnswerIndex)
         {
             playerScore += 10;
@@ -49,6 +55,10 @@ public class QuizTrigger : MonoBehaviour
         }
 
         quizPanel.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 }
+
 
