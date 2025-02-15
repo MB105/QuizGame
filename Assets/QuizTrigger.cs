@@ -31,15 +31,15 @@ public class QuizTrigger : MonoBehaviour
     {
         questionText.text = "Hvad er 2 + 2?";
         answerButtons[0].GetComponentInChildren<TMP_Text>().text = "3";
-        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "4"; // Rigtigt svar
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "4";
         answerButtons[2].GetComponentInChildren<TMP_Text>().text = "5";
 
-        correctAnswerIndex = 1; // Index 1 er korrekt svar
+        correctAnswerIndex = 1; 
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
             answerButtons[i].onClick.RemoveAllListeners();
-            int buttonIndex = i; // Lokal variabel for korrekt lambda
+            int buttonIndex = i; 
             answerButtons[i].onClick.AddListener(() => CheckAnswer(buttonIndex));
         }
 
