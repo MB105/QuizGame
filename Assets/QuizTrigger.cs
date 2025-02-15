@@ -1,64 +1,76 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 
 public class QuizTrigger : MonoBehaviour
 {
-    public GameObject quizPanel;
-    public TMP_Text questionText;
-    public Button[] answerButtons;
-    public int correctAnswerIndex;
+    public GameObject quizPanel; 
+    public TMP_Text questionText;  
+    public Button[] answerButtons; 
+    public int correctAnswerIndex; 
+    public int pointsPerCorrectAnswer = 10;
+    private bool quizActive = false;
 
-    private int playerScore = 0;
-
-    private void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (other.CompareTag("Player"))
+        quizPanel.SetActive(false); // Skjul quiz ved start
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !quizActive)
         {
-            ShowQuiz();
+            quizActive = true;
+            quizPanel.SetActive(true);
+            ShowQuestion();
+            Debug.Log("🎯 Quiz aktiveret!");
         }
     }
 
-    private void ShowQuiz()
+    void ShowQuestion()
     {
-        
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        
-
-        quizPanel.SetActive(true);
         questionText.text = "Hvad er 2 + 2?";
+        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "3";
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "4"; // Rigtigt svar
+        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "5";
 
-        string[] answers = { "3", "4", "5" };
-        correctAnswerIndex = 1;
+        correctAnswerIndex = 1; // Index 1 er korrekt svar
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int index = i;
-            answerButtons[i].GetComponentInChildren<TMP_Text>().text = answers[i];
             answerButtons[i].onClick.RemoveAllListeners();
-            answerButtons[i].onClick.AddListener(() => CheckAnswer(index));
+            int buttonIndex = i; // Lokal variabel for korrekt lambda
+            answerButtons[i].onClick.AddListener(() => CheckAnswer(buttonIndex));
         }
+
+        Debug.Log("✅ Quiz spørgsmål og knapper sat op!");
     }
 
-    public void CheckAnswer(int selectedIndex)
+    void CheckAnswer(int index)
     {
-        
-        if (selectedIndex == correctAnswerIndex)
+        Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
+
+        if (index == correctAnswerIndex)
         {
-            playerScore += 10;
-            Debug.Log($"✅ Korrekt! Score: {playerScore}");
+            Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
         }
         else
         {
             Debug.Log("❌ Forkert svar!");
         }
 
-        quizPanel.SetActive(false);
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        
+        Invoke("HideQuiz", 0.5f);
+    }
+
+    void HideQuiz()
+    {
+        quizPanel.SetActive(false); 
+        quizActive = false;
+        Debug.Log("📉 Quiz skjult!");
     }
 }
+
+
+
 
 
