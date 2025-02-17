@@ -13,7 +13,7 @@ public class QuizTrigger : MonoBehaviour
 
     void Start()
     {
-        quizPanel.SetActive(false); // Skjul quiz ved start
+        quizPanel.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,12 +29,12 @@ public class QuizTrigger : MonoBehaviour
 
     void ShowQuestion()
     {
-        questionText.text = "Hvad er 2 + 2?";
-        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "3";
-        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "4";
-        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "5";
+        questionText.text = "Hvad betyder Rigidbody?";
+        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "En komponent, der giver et objekt fysik";
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "En funktion til at ændre et objekts farve";
+        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "En variable, der styrer et objekts størrelse";
 
-        correctAnswerIndex = 1; 
+        correctAnswerIndex = 0; 
 
         for (int i = 0; i < answerButtons.Length; i++)
         {

@@ -22,9 +22,9 @@ public class QuizTrigger2 : MonoBehaviour
     private void ShowQuiz()
     {
         quizPanel.SetActive(true);
-        questionText.text = "Hvad er 2 + 2?";
+        questionText.text = "Hvad betyder Collider ?";
 
-        string[] answers = { "3", "4", "5" };
+        string[] answers = { "Usynlig ramme til kollision", "Registrerer kollisioner mellem objekter", "Udlyser hændelser uden fysisk påvirkning" };
         correctAnswerIndex = 1; 
 
         for (int i = 0; i < answerButtons.Length; i++)
