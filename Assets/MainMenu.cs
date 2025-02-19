@@ -3,15 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    void Update()
-    {
-        // Hvis spilleren trykker på ESC
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("MainMenu"); // Skift til din startmenu-scene
-        }
-    }
-
+    
     // Starter spillet
     public void StartGame()
     {
