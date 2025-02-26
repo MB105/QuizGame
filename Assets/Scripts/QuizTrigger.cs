@@ -29,10 +29,10 @@ public class QuizTrigger : MonoBehaviour
 
     void ShowQuestion()
     {
-        questionText.text = "Hvad betyder Rigidbody?";
-        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "En komponent, der giver et objekt fysik";
-        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "En funktion til at ændre et objekts farve";
-        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "En variable, der styrer et objekts størrelse";
+        questionText.text = "Hvornår opdagede Christoffer Columbus Amerika?";
+        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "1492";
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "1453";
+        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "1521";
 
         correctAnswerIndex = 0; 
 
