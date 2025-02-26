@@ -46,21 +46,23 @@ public class QuizTrigger : MonoBehaviour
         Debug.Log("✅ Quiz spørgsmål og knapper sat op!");
     }
 
-    void CheckAnswer(int index)
+   void CheckAnswer(int index)
+{
+    Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
+
+    if (index == correctAnswerIndex)
     {
-        Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
-
-        if (index == correctAnswerIndex)
-        {
-            Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
-        }
-        else
-        {
-            Debug.Log("❌ Forkert svar!");
-        }
-
-        Invoke("HideQuiz", 0.5f);
+        Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
+        ScoreManager.instance.AddPoints(pointsPerCorrectAnswer); // Tilføjer point
     }
+    else
+    {
+        Debug.Log("❌ Forkert svar!");
+    }
+
+    Invoke("HideQuiz", 0.5f); // Skjuler quizzen efter svar
+}
+
 
     void HideQuiz()
     {
