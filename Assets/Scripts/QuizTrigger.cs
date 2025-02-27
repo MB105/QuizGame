@@ -11,9 +11,18 @@ public class QuizTrigger : MonoBehaviour
     public int pointsPerCorrectAnswer = 10;
     private bool quizActive = false;
 
+    // Feedback UI elementer
+    public GameObject feedbackPanel; 
+    public TMP_Text feedbackText; 
+    public AudioClip correctAnswerSound; 
+    public AudioClip wrongAnswerSound; 
+    private AudioSource audioSource;
+
     void Start()
     {
         quizPanel.SetActive(false);
+        feedbackPanel.SetActive(false); // Feedbackpanel er skjult som standard
+        audioSource = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,7 +43,7 @@ public class QuizTrigger : MonoBehaviour
         answerButtons[1].GetComponentInChildren<TMP_Text>().text = "1453";
         answerButtons[2].GetComponentInChildren<TMP_Text>().text = "1521";
 
-        correctAnswerIndex = 0; 
+        correctAnswerIndex = 0; // Indstil korrekt svar (1492)
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -46,33 +55,47 @@ public class QuizTrigger : MonoBehaviour
         Debug.Log("✅ Quiz spørgsmål og knapper sat op!");
     }
 
-   void CheckAnswer(int index)
-{
-    Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
-
-    if (index == correctAnswerIndex)
+    void CheckAnswer(int index)
     {
-        Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
-        ScoreManager.instance.AddPoints(pointsPerCorrectAnswer); // Tilføjer point
+        Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
+
+        // Vis feedback baseret på svar
+        if (index == correctAnswerIndex)
+        {
+            Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
+            ScoreManager.instance.AddPoints(pointsPerCorrectAnswer); // Tilføjer point
+            ShowFeedback("Rigtigt svar!", correctAnswerSound);
+        }
+        else
+        {
+            Debug.Log("❌ Forkert svar!");
+            ShowFeedback("Forkert svar!", wrongAnswerSound);
+        }
+
+        //Invoke("HideQuiz", 1.5f); // Skjuler quizzen efter 1,5 sekunder
     }
-    else
+
+    // Vis feedback og afspil lyd
+    void ShowFeedback(string message, AudioClip sound)
     {
-        Debug.Log("❌ Forkert svar!");
+        Debug.Log("📢 Prøver at vise feedbackPanel...");
+        quizPanel.SetActive(false);
+        feedbackPanel.SetActive(true);
+        Debug.Log("✅ feedbackPanel er nu aktiveret!");
+        feedbackText.text = message; // Opdaterer feedback teksten
+        audioSource.PlayOneShot(sound); // Afspiller den korrekte lyd
+
+        Invoke("HideQuiz", 5.0f);
+
+        Debug.Log($"💬 {message}"); // Log besked
     }
 
-    Invoke("HideQuiz", 0.5f); // Skjuler quizzen efter svar
-}
-
-
+    // Skjul quiz og feedback panel
     void HideQuiz()
     {
-        quizPanel.SetActive(false); 
+        quizPanel.SetActive(false);
+        feedbackPanel.SetActive(false); // Skjuler feedback panel
         quizActive = false;
         Debug.Log("📉 Quiz skjult!");
     }
 }
-
-
-
-
-
