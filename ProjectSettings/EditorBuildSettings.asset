@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/quizgame.unity
     guid: 4580fa3e09822a640b4500f87df364cd
+  - enabled: 1
+    path: Assets/Forhindringsbane.unity
+    guid: fbb02266bed1b1844b3226a337bf9d8b
+  - enabled: 1
+    path: Assets/BoldGame.unity
+    guid: 052d8902a3ff4494798288f9fabb562c
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
