@@ -4,6 +4,7 @@ public class DoorTrigger : MonoBehaviour
 {
     public Animator doorAnimator; 
 
+
     private void Start()
     {
         if (doorAnimator == null)
@@ -19,6 +20,8 @@ public class DoorTrigger : MonoBehaviour
             doorAnimator.SetTrigger("Open");
             Debug.Log("🚪 Døren åbner!");
         }
+
+        
     }
 
     private void OnTriggerExit(Collider other)
