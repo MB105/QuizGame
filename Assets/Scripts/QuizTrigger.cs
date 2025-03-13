@@ -62,7 +62,7 @@ public class QuizTrigger : MonoBehaviour
         if (index == correctAnswerIndex)
         {
             Debug.Log("✅ Rigtigt svar! Du har fået en nøgle!");
-            InventoryManager.instance.AddKey(); // Tilføjer en nøgle til spillerens inventory
+            InventoryManager.instance.AddScore(1);
             ShowFeedback("Rigtigt svar! Du har fået en nøgle!", correctAnswerSound);
         }
         else
