@@ -8,7 +8,6 @@ public class QuizTrigger : MonoBehaviour
     public TMP_Text questionText;  
     public Button[] answerButtons; 
     public int correctAnswerIndex; 
-    public int pointsPerCorrectAnswer = 10;
     private bool quizActive = false;
 
     // Feedback UI elementer
@@ -62,17 +61,15 @@ public class QuizTrigger : MonoBehaviour
         // Vis feedback baseret på svar
         if (index == correctAnswerIndex)
         {
-            Debug.Log($"✅ Rigtigt svar! +{pointsPerCorrectAnswer} point");
-            ScoreManager.instance.AddPoints(pointsPerCorrectAnswer); // Tilføjer point
-            ShowFeedback("Rigtigt svar!", correctAnswerSound);
+            Debug.Log("✅ Rigtigt svar! Du har fået en nøgle!");
+            InventoryManager.instance.AddScore(1);
+            ShowFeedback("Rigtigt svar! Du har fået en nøgle!", correctAnswerSound);
         }
         else
         {
             Debug.Log("❌ Forkert svar!");
             ShowFeedback("Forkert svar!", wrongAnswerSound);
         }
-
-        //Invoke("HideQuiz", 1.5f); // Skjuler quizzen efter 1,5 sekunder
     }
 
     // Vis feedback og afspil lyd
@@ -99,3 +96,4 @@ public class QuizTrigger : MonoBehaviour
         Debug.Log("📉 Quiz skjult!");
     }
 }
+
