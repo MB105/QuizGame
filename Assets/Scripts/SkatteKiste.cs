@@ -32,7 +32,7 @@ public class SkatteKiste : MonoBehaviour
     {
         if (InventoryManager.instance.GetKeyCount() > 0)
         {
-            InventoryManager.instance.UseKey(); // Brug en nøgle
+    
             AabnKiste();
         }
         else

@@ -2686,6 +2686,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2676346199846776466, guid: 7fceb2e2298c5ae46be482d598d70c4f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 136
+      objectReference: {fileID: 0}
     - target: {fileID: 6182808272185240311, guid: 7fceb2e2298c5ae46be482d598d70c4f, type: 3}
       propertyPath: m_Name
       value: QuizPanel
@@ -3279,6 +3283,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6201392856791441723, guid: 580e359eaf70a3b438278087d87aaa97, type: 3}
+      propertyPath: score
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7278835020181008440, guid: 580e359eaf70a3b438278087d87aaa97, type: 3}
       propertyPath: m_Name
       value: InventoryManager
@@ -3299,6 +3307,10 @@ PrefabInstance:
     - target: {fileID: 1140981941790607827, guid: 8970180abd7a9d54992f848b15f11591, type: 3}
       propertyPath: m_Name
       value: PlayerFree
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583909814101550802, guid: 8970180abd7a9d54992f848b15f11591, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8743831571296114960, guid: 8970180abd7a9d54992f848b15f11591, type: 3}
       propertyPath: m_LocalPosition.x

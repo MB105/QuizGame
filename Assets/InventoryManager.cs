@@ -24,15 +24,7 @@ public class InventoryManager : MonoBehaviour
         Debug.Log("Nuværende score: " + score);
     }
 
-    // Brug en nøgle
-    public void UseKey()
-    {
-        if (score > 0)
-        {
-            score--;
-            Debug.Log("🔓 Nøgle brugt! Tilbageværende nøgler: " + score);
-        }
-    }
+    
 
     // Hent antallet af nøgler
     public int GetKeyCount()
