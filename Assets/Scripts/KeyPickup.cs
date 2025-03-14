@@ -31,10 +31,7 @@ public class KeyPickup : MonoBehaviour
             if (vinderLyd != null && lydAfspiller != null)
                 lydAfspiller.PlayOneShot(vinderLyd);
 
-            // Gem nøglen
-            int keys = PlayerPrefs.GetInt("Keys", 0);
-            PlayerPrefs.SetInt("Keys", keys + 1);
-            PlayerPrefs.Save();
+            InventoryManager.instance.AddScore (1);
 
             // Start forsinkelse før sceneskift
             Invoke("SkiftScene", forsinkelse);
