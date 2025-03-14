@@ -1417,6 +1417,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4755311582226087683, guid: 5a3d58421cb2e924292b03e7e49947c6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5876788254106676164, guid: 5a3d58421cb2e924292b03e7e49947c6, type: 3}
       propertyPath: m_Name
       value: SkatteKiste
@@ -3285,7 +3289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6201392856791441723, guid: 580e359eaf70a3b438278087d87aaa97, type: 3}
       propertyPath: score
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7278835020181008440, guid: 580e359eaf70a3b438278087d87aaa97, type: 3}
       propertyPath: m_Name
@@ -3310,7 +3314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2583909814101550802, guid: 8970180abd7a9d54992f848b15f11591, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8743831571296114960, guid: 8970180abd7a9d54992f848b15f11591, type: 3}
       propertyPath: m_LocalPosition.x
