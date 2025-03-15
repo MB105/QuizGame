@@ -7,6 +7,7 @@ TagManager:
   - QuizTrigger
   - Ball
   - KeyText
+  - Goalkeeper
   layers:
   - Default
   - TransparentFX

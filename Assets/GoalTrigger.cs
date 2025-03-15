@@ -1,19 +1,28 @@
 using UnityEngine;
-using TMPro; // Husk at importere TextMeshPro!
+using TMPro; 
 
 public class GoalTrigger : MonoBehaviour
 {
-    public TextMeshProUGUI goalMessage; // Reference til UI-beskeden
-    public float messageDuration = 3f; // Hvor længe beskeden skal vises
+    public TextMeshProUGUI goalMessage; 
+    public float messageDuration = 3f; 
+    public Animator goalkeeperAnimator; 
+    public string diveLeftTrigger = "DiveLeft";  // Animator trigger for left dive
+    public string diveRightTrigger = "DiveRight";  // Animator trigger for right dive
+    public string idleTrigger = "Idle";    // Idle animation trigger
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Ball")) // Check if it's the ball
     {
-        if (other.CompareTag("Ball")) // Tjekker om det er bolden
+        // Check if the collision is not with the goalkeeper
+        if (!other.CompareTag("Goalkeeper")) // Ensure it's not the goalkeeper
         {
-            ShowGoalMessage();
-            InventoryManager.instance.AddScore(1); // Tilføjer 1 nøgle
+            StopGoalkeeperDive();   // Stop diving when the ball enters the trigger
+            ShowGoalMessage();      // Show the goal message when the ball enters
+            InventoryManager.instance.AddScore(1); // Add 1 to the score (key)
         }
     }
+}
 
     void ShowGoalMessage()
     {
@@ -26,4 +35,13 @@ public class GoalTrigger : MonoBehaviour
     {
         goalMessage.gameObject.SetActive(false); // Skjul besked
     }
+
+    void StopGoalkeeperDive()
+    {
+          if (goalkeeperAnimator == null) return;
+          
+            goalkeeperAnimator.ResetTrigger(diveRightTrigger);
+            goalkeeperAnimator.ResetTrigger(diveLeftTrigger);
+            goalkeeperAnimator.SetTrigger(idleTrigger);
+        }
 }

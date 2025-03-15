@@ -8,19 +8,15 @@ public class GoalkeeperScript : MonoBehaviour
     public string diveLeftTrigger = "DiveLeft";  // Animator trigger for left dive
     public string diveRightTrigger = "DiveRight";  // Animator trigger for right dive
     public string idleTrigger = "Idle";    // Idle animation trigger
-    public float earlyReactionBuffer = 1.0f;  // Buffer to trigger reaction earlier (adjust this value as needed)
-    
-    private Rigidbody ballRigidbody; // Ball's Rigidbody to measure speed
+    public float earlyReactionBuffer = 1.0f;  // Buffer for earlier reaction
 
-    // BoxCollider to define the boundary of the goalkeeper's movement
-    public BoxCollider movementBoundary;
+    private Rigidbody ballRigidbody; // Ball's Rigidbody to measure speed
+    public MovementBoundary movementBoundary;  // Reference to the MovementBoundary script
 
     void Start()
     {
-        // Get the Animator component from the goalkeeper
         goalkeeperAnimator = GetComponent<Animator>();
 
-        // Get the ball's Rigidbody to measure its speed
         if (ballTransform != null)
         {
             ballRigidbody = ballTransform.GetComponent<Rigidbody>();
@@ -29,84 +25,60 @@ public class GoalkeeperScript : MonoBehaviour
 
     void Update()
     {
-        if (ballTransform == null || ballRigidbody == null) return; // Ensure ball exists and has Rigidbody
+        if (ballTransform == null || ballRigidbody == null || movementBoundary == null) return;
 
-        // Measure X and Z distance between goalkeeper and ball
+        float ballSpeed = ballRigidbody.linearVelocity.magnitude; // Get ball speed
+
+        // Check if the ball is inside the boundary before reacting
+        if (movementBoundary.IsBallInsideTrigger())
+        {
+            HandleGoalkeeperDive(ballSpeed); // Trigger dive based on ball position and speed
+        }
+        else
+        {
+            StopDiving(); // Stop diving if the ball is not in the boundary
+        }
+    }
+
+    // Handle the dive decision based on ball position and speed
+    public void HandleGoalkeeperDive(float ballSpeed)
+    {
+        // Calculate ball position relative to the goalkeeper
         Vector3 directionToBall = ballTransform.position - transform.position;
-        float xDifference = directionToBall.x; // Extract X-axis difference
+        float xDifference = directionToBall.x;
         float zDifference = directionToBall.z;
 
-        // Calculate ball speed
-        float ballSpeed = ballRigidbody.linearVelocity.magnitude;
-
-        // Skip if ball is moving too slowly
-        if (ballSpeed < 1f) return;
-
-        // Add a buffer to the X distance for early reaction (this factor can be adjusted)
+        // Adjust reaction distance based on ball speed
         float adjustedXDistance = Mathf.Abs(xDifference) - earlyReactionBuffer * ballSpeed;
 
-        // Debug logs to check the ball's position and speed
-        Debug.Log("Ball Position: " + ballTransform.position);
-        Debug.Log("X Difference: " + xDifference);
-        Debug.Log("Ball Speed: " + ballSpeed);
-        Debug.Log("Adjusted X Distance: " + adjustedXDistance);
-
-        // Trigger dive animation if the adjusted X distance is within the trigger distance
+        // If the ball is within the dive trigger distance, choose a dive direction
         if (adjustedXDistance < diveTriggerDistance)
         {
-            Debug.Log("Ball is close enough, checking dive direction...");
-
-            // Trigger the dive based on the ball's Z-axis direction
-            if (zDifference > 0) // Ball is to the right
-            {
-                Debug.Log("Diving Right!");
-                goalkeeperAnimator.SetTrigger(diveRightTrigger);
-            }
-            else if (zDifference < 0) // Ball is to the left
-            {
-                Debug.Log("Diving Left!");
-                goalkeeperAnimator.SetTrigger(diveLeftTrigger);
-            }
-        }
-
-        // Constrain goalkeeper within movement boundary (box)
-        ConstrainMovement();
-    }
-
-    void ConstrainMovement()
-    {
-        if (movementBoundary != null)
-        {
-            // Get the boundaries of the movement box
-            Vector3 min = movementBoundary.bounds.min; // Minimum bounds (bottom-left-back)
-            Vector3 max = movementBoundary.bounds.max; // Maximum bounds (top-right-front)
-
-            // Constrain the goalkeeper's position within the bounds of the box
-            float clampedX = Mathf.Clamp(transform.position.x, min.x, max.x);
-            float clampedY = Mathf.Clamp(transform.position.y, min.y, max.y);
-            float clampedZ = Mathf.Clamp(transform.position.z, min.z, max.z);
-
-            // Apply the constrained position to the goalkeeper
-            transform.position = new Vector3(clampedX, clampedY, clampedZ);
+            TriggerDive(zDifference);
         }
     }
 
-    // Detect when the ball collides with the goalkeeper
-    void OnCollisionEnter(Collision collision)
+    // Trigger the appropriate dive animation
+    void TriggerDive(float zDifference)
     {
-        // Check if the object colliding with the goalkeeper is the ball
-        if (collision.gameObject.CompareTag("Ball"))
+        if (zDifference > 0) // Ball is to the right
         {
-            Debug.Log("Ball hit the goalkeeper!");
-
-            // Stop the dive animation and transition to idle
-            goalkeeperAnimator.ResetTrigger(diveRightTrigger);
-            goalkeeperAnimator.ResetTrigger(diveLeftTrigger);
-            goalkeeperAnimator.SetTrigger(idleTrigger); // Transition to idle state
+            goalkeeperAnimator.SetTrigger(diveRightTrigger);
         }
+        else if (zDifference < 0) // Ball is to the left
+        {
+            goalkeeperAnimator.SetTrigger(diveLeftTrigger);
+        }
+    }
+
+    // Stop diving and reset animation to idle
+    public void StopDiving()
+    {
+        goalkeeperAnimator.ResetTrigger(diveRightTrigger);
+        goalkeeperAnimator.ResetTrigger(diveLeftTrigger);
+        goalkeeperAnimator.SetTrigger(idleTrigger);
     }
 }
-
 
 
 

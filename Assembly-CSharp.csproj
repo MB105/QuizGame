@@ -120,6 +120,7 @@
     <Compile Include="Assets\ScoreUI1.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
+    <Compile Include="Assets\MovementBoundary.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\WallMovable.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Controller\CameraManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
