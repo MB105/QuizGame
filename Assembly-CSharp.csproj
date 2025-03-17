@@ -81,6 +81,7 @@
     <Compile Include="Assets\Resources\Scripts\AttackDeterminer.cs" />
     <Compile Include="Assets\Audio.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\SavePos.cs" />
+    <Compile Include="Assets\GoalMessageManager.cs" />
     <Compile Include="Assets\Scripts\MovingTønde.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Assets\ObstacleCoursePack\Scripts\Bounce.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
+    <Compile Include="Assets\Scripts\GameSceneManager.cs" />
     <Compile Include="Assets\Resources\Scripts\PlayerControl.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\MovableObs.cs" />
     <Compile Include="Assets\Scripts\Key.cs" />

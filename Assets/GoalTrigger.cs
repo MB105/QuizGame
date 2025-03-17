@@ -1,47 +1,54 @@
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
 public class GoalTrigger : MonoBehaviour
 {
-    public TextMeshProUGUI goalMessage; 
-    public float messageDuration = 3f; 
-    public Animator goalkeeperAnimator; 
+    public TextMeshProUGUI goalMessage;
+    public float messageDuration = 4f;
+    public Animator goalkeeperAnimator;
     public string diveLeftTrigger = "DiveLeft";  // Animator trigger for left dive
     public string diveRightTrigger = "DiveRight";  // Animator trigger for right dive
     public string idleTrigger = "Idle";    // Idle animation trigger
+    public GoalkeeperScript goalkeeperScript;
+    
+    // Static flag to track if a goal was scored
+    public static bool isGoal = false;
 
-    void OnTriggerEnter(Collider other)
-{
-    if (other.CompareTag("Ball")) // Check if it's the ball
+    public AudioSource goalSoundSource; // Reference to AudioSource
+    public AudioClip goalSoundClip;
+
+    private void OnTriggerEnter(Collider other)
     {
-        // Check if the collision is not with the goalkeeper
-        if (!other.CompareTag("Goalkeeper")) // Ensure it's not the goalkeeper
-        {
-            StopGoalkeeperDive();   // Stop diving when the ball enters the trigger
-            ShowGoalMessage();      // Show the goal message when the ball enters
-            InventoryManager.instance.AddScore(1); // Add 1 to the score (key)
-        }
+        if (other.CompareTag("Ball"))
+{
+    // Check if the goalkeeper has not caught the ball before declaring a goal
+    if (!goalkeeperScript.GetBallCaught())
+    {
+        // Set the goal flag to true
+        isGoal = true;
+
+        // Show the "Goal" message
+        ShowGoalMessage("MÅL!!! Du har fået en nøgle");
+
+        // Play the goal sound
+        goalSoundSource.PlayOneShot(goalSoundClip);
+
+        // Add score for the goal
+        InventoryManager.instance.AddScore(1);
+
+        // Reset goalkeeper's catch state for the next attempt
+        goalkeeperScript.ResetGoalkeeperState();
+
+        // Delay scene change after scoring a goal
+        GameSceneManager.instance.LoadSceneWithDelay("quizgame", 6.0f);
     }
 }
 
-    void ShowGoalMessage()
-    {
-        goalMessage.gameObject.SetActive(true); // Vis besked
-        goalMessage.text = "MÅL!!! Du har fået en nøgle";
-        Invoke("HideGoalMessage", messageDuration); // Skjul beskeden efter tid
     }
 
-    void HideGoalMessage()
+    // Implement GoalMessageManager to show the goal message
+    void ShowGoalMessage(string message)
     {
-        goalMessage.gameObject.SetActive(false); // Skjul besked
+        GoalMessageManager.instance.ShowMessage(message);
     }
-
-    void StopGoalkeeperDive()
-    {
-          if (goalkeeperAnimator == null) return;
-          
-            goalkeeperAnimator.ResetTrigger(diveRightTrigger);
-            goalkeeperAnimator.ResetTrigger(diveLeftTrigger);
-            goalkeeperAnimator.SetTrigger(idleTrigger);
-        }
 }

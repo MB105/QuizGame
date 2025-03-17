@@ -1,12 +1,15 @@
 using UnityEngine;
+using TMPro;
 
 public class MovementBoundary : MonoBehaviour
 {
     public GoalkeeperScript goalkeeperScript; // Reference to the GoalkeeperScript
-    
     private bool ballInsideTrigger = false;  // To track if the ball is inside the trigger
 
-    // When the ball enters the trigger box
+    public TextMeshProUGUI goalMessage; // Reference to show the message
+    public float messageDuration = 4f;
+
+    // When the ball enters the trigger box (MovementBoundary)
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
@@ -23,13 +26,22 @@ public class MovementBoundary : MonoBehaviour
         }
     }
 
-    // When the ball exits the trigger box, stop diving
+    // When the ball exits the trigger box (MovementBoundary)
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
             ballInsideTrigger = false;  // Ball has exited the trigger
+
+            // Check if the ball hasn't already scored a goal in the GoalTrigger area
+            if (!GoalTrigger.isGoal) // You'll need a static variable `isGoal` in GoalTrigger to track if a goal is scored
+            {
+                // Show a "No goal" message because the ball exited the boundary without scoring
+                ShowGoalMessage("Du ramte ved siden af. Du får ingen nøgle.");
+            }
+            
             goalkeeperScript.StopDiving();
+            GameSceneManager.instance.LoadSceneWithDelay("quizgame", 6.0f);
         }
     }
 
@@ -38,6 +50,16 @@ public class MovementBoundary : MonoBehaviour
     {
         return ballInsideTrigger;  // Return whether the ball is inside the trigger
     }
+
+    // Implement GoalMessageManager to show the goal message
+    void ShowGoalMessage(string message)
+    {
+        GoalMessageManager.instance.ShowMessage(message);
+
+        
+    }
 }
+
+
 
 
