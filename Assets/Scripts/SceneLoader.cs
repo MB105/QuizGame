@@ -1,15 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Gør det muligt at skifte scene
+using UnityEngine.SceneManagement; 
 
 public class SceneLoader : MonoBehaviour
 {
-    public string sceneToLoad; // Navnet på scenen, der skal loades
+    public string sceneToLoad; 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Tjekker om det er spilleren
+        if (other.CompareTag("Player")) 
         {
-            SceneManager.LoadScene(sceneToLoad); // Skifter scene
+            SceneManager.LoadScene(sceneToLoad); 
         }
     }
 }

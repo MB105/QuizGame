@@ -7,8 +7,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Debug.Log("Escape pressed! Skifter til hovedmenu.");
-            SceneManager.LoadScene("MainMenu"); // Skift til menuen
+            SceneManager.LoadScene("MainMenu"); 
         }
     }
 }

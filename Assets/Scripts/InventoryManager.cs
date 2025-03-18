@@ -2,31 +2,28 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager instance; // Singleton-instance
-    public int score = 0; // Point
+    public static InventoryManager instance; 
+    public int score = 0; 
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // Bevar objektet mellem scener
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-            Destroy(gameObject); // Undgå dubletter
+            Destroy(gameObject); 
         }
     }
 
     public void AddScore(int amount)
     {
-        score += amount; // Tilføjer point
-        Debug.Log("Nuværende score: " + score);
+        score += amount; 
     }
 
 
-
-    // Hent antallet af nøgler
     public int GetKeyCount()
     {
         return score;

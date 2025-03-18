@@ -1,53 +1,85 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.UI;
 
 public class QuizTrigger2 : MonoBehaviour
 {
-    public GameObject quizPanel;
-    public TMP_Text questionText;
-    public Button[] answerButtons;
-    public int correctAnswerIndex;
+    public GameObject quizPanel; 
+    public TMP_Text questionText;  
+    public Button[] answerButtons; 
+    public int correctAnswerIndex; 
+    private bool quizActive = false;
 
-    private int playerScore = 0;
+    // Feedback UI elementer
+    public GameObject feedbackPanel; 
+    public TMP_Text feedbackText; 
+    public AudioClip correctAnswerSound; 
+    public AudioClip wrongAnswerSound; 
+    private AudioSource audioSource;
 
-    private void OnTriggerEnter(Collider other)
+    void Start()
     {
-        if (other.CompareTag("Player"))
+        quizPanel.SetActive(false);
+        feedbackPanel.SetActive(false); 
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !quizActive)
         {
-            ShowQuiz();
+            quizActive = true;
+            quizPanel.SetActive(true);
+            ShowQuestion();
         }
     }
 
-    private void ShowQuiz()
+    void ShowQuestion()
     {
-        quizPanel.SetActive(true);
-        questionText.text = "Hvad betyder Collider ?";
+        questionText.text = "Hvornår har Marwa Fødselsdag?";
+        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "21. september";
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "22. september";
+        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "23. september";
 
-        string[] answers = { "Usynlig ramme til kollision", "Registrerer kollisioner mellem objekter", "Udlyser hændelser uden fysisk påvirkning" };
-        correctAnswerIndex = 1; 
+        correctAnswerIndex = 0; 
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
-            int index = i; 
-            answerButtons[i].GetComponentInChildren<TMP_Text>().text = answers[i];
             answerButtons[i].onClick.RemoveAllListeners();
-            answerButtons[i].onClick.AddListener(() => CheckAnswer(index));
+            int buttonIndex = i; 
+            answerButtons[i].onClick.AddListener(() => CheckAnswer(buttonIndex));
         }
     }
 
-    private void CheckAnswer(int selectedIndex)
+    void CheckAnswer(int index)
     {
-        if (selectedIndex == correctAnswerIndex)
+
+        if (index == correctAnswerIndex)
         {
-            playerScore += 10;
-            Debug.Log($"✅ Korrekt! Score: {playerScore}");
+            InventoryManager.instance.AddScore(1);
+            ShowFeedback("Rigtigt svar! Du har fået en nøgle", correctAnswerSound);
         }
         else
         {
-            Debug.Log("❌ Forkert svar!");
+            ShowFeedback("Forkert svar", wrongAnswerSound);
         }
+    }
 
+    void ShowFeedback(string message, AudioClip sound)
+    {
         quizPanel.SetActive(false);
+        feedbackPanel.SetActive(true);
+        feedbackText.text = message; 
+        audioSource.PlayOneShot(sound); 
+
+        Invoke("HideQuiz", 5.0f);
+
+    }
+
+    void HideQuiz()
+    {
+        quizPanel.SetActive(false);
+        feedbackPanel.SetActive(false); 
+        quizActive = false;
     }
 }

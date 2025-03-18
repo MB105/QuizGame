@@ -20,7 +20,7 @@ public class QuizTrigger : MonoBehaviour
     void Start()
     {
         quizPanel.SetActive(false);
-        feedbackPanel.SetActive(false); // Feedbackpanel er skjult som standard
+        feedbackPanel.SetActive(false); 
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -31,7 +31,6 @@ public class QuizTrigger : MonoBehaviour
             quizActive = true;
             quizPanel.SetActive(true);
             ShowQuestion();
-            Debug.Log("🎯 Quiz aktiveret!");
         }
     }
 
@@ -42,7 +41,7 @@ public class QuizTrigger : MonoBehaviour
         answerButtons[1].GetComponentInChildren<TMP_Text>().text = "1453";
         answerButtons[2].GetComponentInChildren<TMP_Text>().text = "1521";
 
-        correctAnswerIndex = 0; // Indstil korrekt svar (1492)
+        correctAnswerIndex = 0; 
 
         for (int i = 0; i < answerButtons.Length; i++)
         {
@@ -50,50 +49,38 @@ public class QuizTrigger : MonoBehaviour
             int buttonIndex = i; 
             answerButtons[i].onClick.AddListener(() => CheckAnswer(buttonIndex));
         }
-
-        Debug.Log("✅ Quiz spørgsmål og knapper sat op!");
     }
 
     void CheckAnswer(int index)
     {
-        Debug.Log($"🎯 CheckAnswer KALDT! Index: {index}");
 
-        // Vis feedback baseret på svar
         if (index == correctAnswerIndex)
         {
-            Debug.Log("✅ Rigtigt svar! Du har fået en nøgle!");
             InventoryManager.instance.AddScore(1);
-            ShowFeedback("Rigtigt svar! Du har fået en nøgle!", correctAnswerSound);
+            ShowFeedback("Rigtigt svar! Du har fået en nøgle", correctAnswerSound);
         }
         else
         {
-            Debug.Log("❌ Forkert svar!");
-            ShowFeedback("Forkert svar!", wrongAnswerSound);
+            ShowFeedback("Forkert svar", wrongAnswerSound);
         }
     }
 
-    // Vis feedback og afspil lyd
     void ShowFeedback(string message, AudioClip sound)
     {
-        Debug.Log("📢 Prøver at vise feedbackPanel...");
         quizPanel.SetActive(false);
         feedbackPanel.SetActive(true);
-        Debug.Log("✅ feedbackPanel er nu aktiveret!");
-        feedbackText.text = message; // Opdaterer feedback teksten
-        audioSource.PlayOneShot(sound); // Afspiller den korrekte lyd
+        feedbackText.text = message; 
+        audioSource.PlayOneShot(sound); 
 
         Invoke("HideQuiz", 5.0f);
 
-        Debug.Log($"💬 {message}"); // Log besked
     }
 
-    // Skjul quiz og feedback panel
     void HideQuiz()
     {
         quizPanel.SetActive(false);
-        feedbackPanel.SetActive(false); // Skjuler feedback panel
+        feedbackPanel.SetActive(false); 
         quizActive = false;
-        Debug.Log("📉 Quiz skjult!");
     }
 }
 
