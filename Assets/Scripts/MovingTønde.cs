@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MovingTønde : MonoBehaviour
 {
-    public float speed = 2f;      // Hastighed af bevægelsen
-    public float amplitude = 2f;  // Hvor langt tønden bevæger sig til siden
+    public float speed;      // Hastighed af bevægelsen
+    public float amplitude;  // Hvor langt tønden bevæger sig til siden
 
     private Vector3 startPos;
 
@@ -25,8 +25,6 @@ public class MovingTønde : MonoBehaviour
         // Hvis spilleren rammes (forudsætter at spilleren har tagget "Player")
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Spilleren blev ramt af tønden!");
-            // Forudsætter, at spilleren har et script med en Respawn()-metode
             collision.gameObject.GetComponent<PlayerDeath>().Respawn();
         }
     }

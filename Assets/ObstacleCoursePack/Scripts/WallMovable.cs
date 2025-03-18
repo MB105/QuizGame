@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class WallMovable : MonoBehaviour
 {
-	public bool isDown = true; //If the wall starts down, if not you must modify to false
-	public bool isRandom = true; //If you want that the wall go down random
-	public float speed = 2f;
+	public bool isDown = true; 
+	public bool isRandom = true; 
+	public float speed;
 
-	private float height; //Height of the platform
+	private float height; 
 	private float posYDown; //Start position of the Y coord
 	private bool isWaiting = false; //If the wall is waiting up or down
 	private bool canChange = true; //If the wall is thinking if should go down or not
