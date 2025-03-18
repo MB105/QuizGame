@@ -73,6 +73,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\KillZone.cs" />
     <Compile Include="Assets\GoalTrigger.cs" />
+    <Compile Include="Assets\EnemyTrigger.cs" />
     <Compile Include="Assets\BoxCollision.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovment1.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Assets\MovementBoundary.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\WallMovable.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Controller\CameraManager.cs" />
+    <Compile Include="Assets\EnemyAI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\KeyPickup.cs" />
@@ -1361,6 +1363,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.AI.Navigation.Samples.Initialization.Editor.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Samples.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
