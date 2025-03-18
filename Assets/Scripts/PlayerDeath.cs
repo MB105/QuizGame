@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public AudioSource deathSound; // Reference til AudioSource
+    public AudioSource deathSound; 
 
     void Start()
     {
         if (deathSound == null)
         {
-            deathSound = GetComponent<AudioSource>(); // Finder AudioSource på Player
+            deathSound = GetComponent<AudioSource>(); 
         }
     }
 
@@ -16,14 +16,13 @@ public class PlayerDeath : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DeathZone"))
         {
-            Debug.Log("Dødszone ramt!");
-            deathSound.Play(); // Afspil død-lyden
-            Invoke("Respawn", 1f); // Respawn efter 1 sekund
+            deathSound.Play(); 
+            Invoke("Respawn", 1f); 
         }
     }
 
     public void Respawn()
     {
-        transform.position = new Vector3(724, 153, 1288); // Udskift med din startposition
+        transform.position = new Vector3(724, 153, 1288); 
     }
 }

@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public float speed = 2f; // Hastighed af bevægelsen
-    public float height = 2f; // Hvor højt platformen bevæger sig
+    public float speed; 
+    public float height; 
 
     private Vector3 startPos;
 
     void Start()
     {
-        startPos = transform.position; // Gem startpositionen
+        startPos = transform.position; 
     }
 
     void Update()
