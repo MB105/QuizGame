@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttackInput : MonoBehaviour
@@ -8,6 +6,9 @@ public class PlayerAttackInput : MonoBehaviour
     public event Action StrafeStart;
     public event Action StrafeEnd;
     public event Action Attack;
+
+    public float attackCooldown = 0.5f; // Cooldown-time in seconds
+    private float lastAttackTime = 0f;
 
     void Update()
     {
@@ -21,9 +22,12 @@ public class PlayerAttackInput : MonoBehaviour
             StrafeEnd?.Invoke();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        // Adding a cooldown-check for sword attacks
+        if (Input.GetMouseButtonDown(0) && Time.time >= lastAttackTime + attackCooldown)
         {
+            lastAttackTime = Time.time; // Updating the time of sword attack animation
             Attack?.Invoke();
         }
     }
 }
+

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5066056848955781665}
   - component: {fileID: 5066056848955781664}
   - component: {fileID: 5066056848955781671}
-  - component: {fileID: 6201886203307723356}
+  - component: {fileID: 3775195954670266511}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Player
@@ -121,7 +121,7 @@ MonoBehaviour:
   collisionLayers:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6201886203307723356
+--- !u!114 &3775195954670266511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

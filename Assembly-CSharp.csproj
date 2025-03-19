@@ -74,7 +74,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scripts\MovementBoundary.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\KillZone.cs" />
+    <Compile Include="Assets\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\ScoreManager.cs" />
+    <Compile Include="Assets\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\PlayerMovment1.cs" />
     <Compile Include="Assets\Scripts\ShootBall.cs" />
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Assets\Audio.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\SavePos.cs" />
     <Compile Include="Assets\Scripts\MovingTønde.cs" />
+    <Compile Include="Assets\ChessPlayer.cs" />
     <Compile Include="Assets\Scripts\GoalMessageManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\QuizTrigger.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Resources\Scripts\WowCamera.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\FallPlat.cs" />
+    <Compile Include="Assets\SwordDamage.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\ObstacleCoursePack\Scripts\WallMovable.cs" />

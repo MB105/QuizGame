@@ -6,6 +6,7 @@ public class EnemyAI : MonoBehaviour
     public Transform player; // Reference til spilleren
     private NavMeshAgent agent; // NavMeshAgent
     private bool isChasing = false; // Holder styr på jagtstatus
+    private Vector3 startPosition; // Enemy's startposition
 
     void Start()
     {
@@ -16,35 +17,50 @@ public class EnemyAI : MonoBehaviour
             Debug.LogError("❌ NavMeshAgent mangler på enemy!");
             return;
         }
-        
-        // Fejl, hvis spilleren ikke er sat op i Inspector
+
+        // Fejl, hvis spilleren ikke er sat i Inspector
         if (player == null)
         {
             Debug.LogError("❌ Player er ikke sat op i Inspector!");
         }
+
+        // Gem enemy's startposition, så den kan vende tilbage
+        startPosition = transform.position;
     }
 
     void Update()
+{
+    if (agent != null && agent.isOnNavMesh)
     {
-        if (agent != null && agent.isOnNavMesh)
+        if (isChasing)
         {
-            if (isChasing)
+            // Tjek om der er en forhindring mellem enemy og player
+            RaycastHit hit;
+            if (Physics.Linecast(transform.position, player.position, out hit))
             {
-                // Sæt destination til spillerens position
-                agent.SetDestination(player.position);
-                Debug.Log("🏃 Enemy jagter spilleren!");
-            }
-            else
-            {
-                agent.ResetPath(); // Stop med at følge spilleren
-                Debug.Log("⛔ Enemy stopper.");
+                if (hit.collider.CompareTag("Player"))
+                {
+                    agent.SetDestination(player.position);
+                    Debug.Log("🏃 Enemy jagter spilleren!");
+                }
+                else
+                {
+                    Debug.Log("👀 Enemy kan ikke se spilleren!");
+                }
             }
         }
         else
         {
-            Debug.Log("❌ NavMeshAgent er ikke på NavMesh!");
+            agent.SetDestination(startPosition);
+            Debug.Log("🔄 Enemy vender tilbage til sin plads.");
         }
     }
+    else
+    {
+        Debug.Log("❌ NavMeshAgent er ikke på NavMesh!");
+    }
+}
+
 
     // Kaldt af trigger scriptet for at starte jagt
     public void StartChase()
@@ -60,6 +76,7 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("❌ Enemy stopper jagten!");
     }
 }
+
 
 
 

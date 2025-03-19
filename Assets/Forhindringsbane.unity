@@ -906,8 +906,8 @@ GameObject:
   - component: {fileID: 1216140815}
   - component: {fileID: 1216140814}
   - component: {fileID: 1216140813}
-  - component: {fileID: 1216140817}
   - component: {fileID: 1216140818}
+  - component: {fileID: 1216140819}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1004,19 +1004,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1216140817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216140812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bf0a7d75dcb66540aa6ca68f1dd6c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1507885017}
 --- !u!195 &1216140818
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1039,6 +1026,19 @@ NavMeshAgent:
   m_BaseOffset: 0.49999997
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1216140819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216140812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fd54f575970794cae95602bae12531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAI: {fileID: 1949324851}
 --- !u!1001 &1369856780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1248,9 +1248,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Height: 6
+  m_Height: 4.5
   m_Direction: 1
-  m_Center: {x: 10, y: 0.5, z: 1.5}
+  m_Center: {x: 10, y: 0.7, z: 1.5}
 --- !u!114 &1949324851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,10 +1260,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949324844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8fd54f575970794cae95602bae12531, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bf0a7d75dcb66540aa6ca68f1dd6c1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyAI: {fileID: 1216140817}
+  player: {fileID: 1507885017}
 --- !u!1 &1992833350 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4682598126530698194, guid: fdb3eef9092b3de40a9b5ae316907825, type: 3}
@@ -2112,7 +2112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1876986468462783896, guid: 2829451b701feee41bc5208fe0061870, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 160
+      value: 157.4
       objectReference: {fileID: 0}
     - target: {fileID: 1876986468462783896, guid: 2829451b701feee41bc5208fe0061870, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2150,6 +2150,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5063593855238142174, guid: 2829451b701feee41bc5208fe0061870, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934306905518862107, guid: 2829451b701feee41bc5208fe0061870, type: 3}
+      propertyPath: m_Speed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5934306905518862107, guid: 2829451b701feee41bc5208fe0061870, type: 3}
       propertyPath: m_Height
       value: 2
@@ -2168,7 +2176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5934306905518862107, guid: 2829451b701feee41bc5208fe0061870, type: 3}
       propertyPath: m_BaseOffset
-      value: 2.4
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 8765970739145370387, guid: 2829451b701feee41bc5208fe0061870, type: 3}
       propertyPath: m_Height
@@ -2187,7 +2195,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6134959891953541125, guid: 2829451b701feee41bc5208fe0061870, type: 3}
+    - {fileID: 5633165251175160204, guid: 2829451b701feee41bc5208fe0061870, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5063593855238142174, guid: 2829451b701feee41bc5208fe0061870, type: 3}
