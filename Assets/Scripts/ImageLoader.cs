@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class ImageLoader : MonoBehaviour
 {
-    public Image imageComponent; // Drag your Image component here
-    public Sprite newSprite; // Drag your new Sprite here in the Inspector
+    public Image imageComponent; 
+    public Sprite newSprite; 
 
     void Start()
     {

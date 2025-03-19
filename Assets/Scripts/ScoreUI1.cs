@@ -1,9 +1,9 @@
 using UnityEngine;
-using TMPro; // Importer TextMeshPro namespace
+using TMPro; 
 
 public class ScoreUI : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText; // Reference til TextMeshPro UI-teksten
+    public TextMeshProUGUI scoreText; 
 
     void Update()
     {

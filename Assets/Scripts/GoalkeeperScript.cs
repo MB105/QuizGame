@@ -5,7 +5,6 @@ public class GoalkeeperScript : MonoBehaviour
 {
     private Animator goalkeeperAnimator;
     public Transform ballTransform;
-    public float messageDuration = 4f; 
     public float diveTriggerDistance = 22.0f;  
     public string diveLeftTrigger = "DiveLeft";  
     public string diveRightTrigger = "DiveRight";  
@@ -97,7 +96,7 @@ public class GoalkeeperScript : MonoBehaviour
         ballCaught = false;
     }
 
-    // Implementing GoalMessageManager to show the goal message
+    
     public void ShowGoalMessage()
     {
         GoalMessageManager.instance.ShowMessage("Målmanden greb bolden. Du får ingen nøgle.");
