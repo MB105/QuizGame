@@ -36,10 +36,10 @@ public class QuizTrigger2 : MonoBehaviour
 
     void ShowQuestion()
     {
-        questionText.text = "Hvornår har Marwa Fødselsdag?";
-        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "21. september";
-        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "22. september";
-        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "23. september";
+        questionText.text = "Hvilket land har den længste kystlinje i verden?";
+        answerButtons[0].GetComponentInChildren<TMP_Text>().text = "Canada";
+        answerButtons[1].GetComponentInChildren<TMP_Text>().text = "Australien";
+        answerButtons[2].GetComponentInChildren<TMP_Text>().text = "Rusland";
 
         correctAnswerIndex = 0; 
 
