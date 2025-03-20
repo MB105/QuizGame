@@ -459,7 +459,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTransform: {fileID: 339222527}
-  messageDuration: 3
   diveTriggerDistance: 3
   diveLeftTrigger: DiveLeft
   diveRightTrigger: DiveRight
@@ -953,6 +952,22 @@ PrefabInstance:
     - target: {fileID: 5704874767509550703, guid: 46330a8b87cf78446b87468323390a35, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185375787200899558, guid: 46330a8b87cf78446b87468323390a35, type: 3}
+      propertyPath: m_margin.w
+      value: -37.28714
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185375787200899558, guid: 46330a8b87cf78446b87468323390a35, type: 3}
+      propertyPath: m_margin.x
+      value: -198.83597
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185375787200899558, guid: 46330a8b87cf78446b87468323390a35, type: 3}
+      propertyPath: m_margin.y
+      value: 6.2130127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6185375787200899558, guid: 46330a8b87cf78446b87468323390a35, type: 3}
+      propertyPath: m_margin.z
+      value: 133.59552
       objectReference: {fileID: 0}
     - target: {fileID: 7876100410280194708, guid: 46330a8b87cf78446b87468323390a35, type: 3}
       propertyPath: m_IsActive
