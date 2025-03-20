@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotateKey : MonoBehaviour
 {
-    public float rotationSpeed = 50f; 
+    public float rotationSpeed; 
 
     void Update()
     {
