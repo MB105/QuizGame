@@ -4,7 +4,7 @@ using TMPro;
 public class GoalMessageManager : MonoBehaviour
 {
     public static GoalMessageManager instance;
-    public TextMeshProUGUI goalMessage;  // Changed to TextMeshProUGUI
+    public TextMeshProUGUI goalMessage;
     public float messageDuration = 3f;
 
     private void Awake()

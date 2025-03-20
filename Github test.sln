@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{95E34628-EC11-7A54-172C-B05DF4579927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AI.Navigation.Samples", "Unity.AI.Navigation.Samples.csproj", "{D839EAEC-31E4-C743-CE49-62AD8D945826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.AI.Navigation.Samples.Initialization.Editor", "Unity.AI.Navigation.Samples.Initialization.Editor.csproj", "{A4B189BF-5F23-B6BE-0A23-4B5069FA8F3B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{95E34628-EC11-7A54-172C-B05DF4579927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95E34628-EC11-7A54-172C-B05DF4579927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95E34628-EC11-7A54-172C-B05DF4579927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D839EAEC-31E4-C743-CE49-62AD8D945826}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D839EAEC-31E4-C743-CE49-62AD8D945826}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D839EAEC-31E4-C743-CE49-62AD8D945826}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D839EAEC-31E4-C743-CE49-62AD8D945826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B189BF-5F23-B6BE-0A23-4B5069FA8F3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B189BF-5F23-B6BE-0A23-4B5069FA8F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B189BF-5F23-B6BE-0A23-4B5069FA8F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B189BF-5F23-B6BE-0A23-4B5069FA8F3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
