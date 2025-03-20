@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro; // Husk at tilføje TextMeshPro support
+using TMPro; 
 
 public class KeyPickup : MonoBehaviour
 {

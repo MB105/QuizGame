@@ -14,7 +14,6 @@ public class PlayerMovement1 : MonoBehaviour
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
 
-    // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -22,7 +21,6 @@ public class PlayerMovement1 : MonoBehaviour
         originalStepOffset = characterController.stepOffset;
     }
 
-    // Update is called once per frame
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
