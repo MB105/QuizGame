@@ -1310,8 +1310,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Samples.Initialization.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Samples.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
