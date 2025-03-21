@@ -459,11 +459,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballTransform: {fileID: 339222527}
-  diveTriggerDistance: 3
   diveLeftTrigger: DiveLeft
   diveRightTrigger: DiveRight
   idleTrigger: Idle
-  earlyReactionBuffer: 1
   goalMessage: {fileID: 142907818}
   movementBoundary: {fileID: 1425443351}
 --- !u!136 &1439815737
@@ -1060,6 +1058,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 65255307904477432, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65255307904477432, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
       propertyPath: goalMessage
       value: 
       objectReference: {fileID: 142907818}
@@ -1079,6 +1081,14 @@ PrefabInstance:
       propertyPath: goalkeeperAnimator
       value: 
       objectReference: {fileID: 1439815738}
+    - target: {fileID: 3880773517794091312, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3880773517794091312, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4834272744541747805, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
       propertyPath: m_LocalScale.x
       value: 70.701256
@@ -1127,6 +1137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: "M\xE5lZone"
       objectReference: {fileID: 0}
+    - target: {fileID: 8497758249545733992, guid: 8e0902424b4c4d44cba91d210dd87d65, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1162,7 +1176,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 113.01309
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

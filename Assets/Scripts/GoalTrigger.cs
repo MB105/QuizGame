@@ -4,10 +4,7 @@ using TMPro;
 public class GoalTrigger : MonoBehaviour
 {
     public TextMeshProUGUI goalMessage;
-    public Animator goalkeeperAnimator;
-    public string diveLeftTrigger = "DiveLeft";  
-    public string diveRightTrigger = "DiveRight";  
-    public string idleTrigger = "Idle";   
+    public Animator goalkeeperAnimator; 
     public GoalkeeperScript goalkeeperScript;
     
    
@@ -34,6 +31,9 @@ public class GoalTrigger : MonoBehaviour
 
         
         InventoryManager.instance.AddScore(1);
+
+
+        goalkeeperScript.StopDiving();
 
         
         goalkeeperScript.ResetGoalkeeperState();

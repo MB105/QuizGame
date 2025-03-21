@@ -4,12 +4,10 @@ using TMPro;
 public class GoalkeeperScript : MonoBehaviour
 {
     private Animator goalkeeperAnimator;
-    public Transform ballTransform;
-    public float diveTriggerDistance = 22.0f;  
+    public Transform ballTransform; 
     public string diveLeftTrigger = "DiveLeft";  
     public string diveRightTrigger = "DiveRight";  
     public string idleTrigger = "Idle";    
-    public float earlyReactionBuffer = 1.0f;  
     private bool ballCaught = false; 
     public TextMeshProUGUI goalMessage;
 
@@ -43,18 +41,24 @@ public class GoalkeeperScript : MonoBehaviour
     }
 
     public void HandleGoalkeeperDive(float ballSpeed)
+{
+    
+    Vector3 directionToBall = ballTransform.position - transform.position;
+    float xDifference = directionToBall.x;
+    float zDifference = directionToBall.z;
+
+    
+    float randomReactionTime = Random.Range(0.5f, 1.0f);
+
+    
+    float adjustedXDistance = Mathf.Abs(xDifference) - ballSpeed * randomReactionTime;
+
+    
+   if (adjustedXDistance <= 0)
     {
-        Vector3 directionToBall = ballTransform.position - transform.position;
-        float xDifference = directionToBall.x;
-        float zDifference = directionToBall.z;
-
-        float adjustedXDistance = Mathf.Abs(xDifference) - earlyReactionBuffer * ballSpeed;
-
-        if (adjustedXDistance < diveTriggerDistance)
-        {
-            TriggerDive(zDifference);
-        }
+        TriggerDive(zDifference);
     }
+}
 
     void TriggerDive(float zDifference)
     {
